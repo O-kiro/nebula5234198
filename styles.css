@@ -1,0 +1,252 @@
+/* styles.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #EEEFE0, #D1D8BE);
+  color: #2f2f2f;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="0" y="20" font-size="20" fill="%23819A91">❤</text></svg>');
+  animation: hearts 20s linear infinite;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+@keyframes hearts {
+  from { background-position: 0 0; }
+  to { background-position: 0 1000px; }
+}
+
+@keyframes openEnvelope {
+  0% {
+    transform: scale(0.8) rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) rotateX(-10deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+header {
+  background-color: #A7C1A8;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(129, 154, 145, 0.6);
+  animation: glowHeader 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowHeader {
+  from { box-shadow: 0 0 10px rgba(129, 154, 145, 0.3); }
+  to   { box-shadow: 0 0 30px rgba(129, 154, 145, 0.8); }
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #f0f0f0;
+}
+
+.timeline {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.timeline h2 {
+  text-align: center;
+  color: #819A91;
+  font-size: 2rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.moment {
+  background: #EEEFE0;
+  border-left: 5px solid #A7C1A8;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(129, 154, 145, 0.2);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  animation: fadeSlideUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.moment:hover {
+  box-shadow: 0 0 25px rgba(129, 154, 145, 0.5);
+  transform: translateY(-3px);
+}
+
+.moment:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+.moment:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+.moment h3 {
+  margin-top: 0;
+  color: #819A91;
+}
+
+.music-player {
+  padding: 2rem;
+  text-align: center;
+  background: #D1D8BE;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.music-player h2 {
+  font-size: 1.8rem;
+  color: #819A91;
+}
+
+.spotify-embed, .spotify-lazy {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.final-message {
+  background: #EEEFE0;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 2s ease forwards;
+}
+
+.final-message h2 {
+  color: #819A91;
+  font-size: 1.6rem;
+}
+
+button {
+  background-color: #A7C1A8;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #819A91;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(129, 154, 145, 0.3);
+}
+
+.hidden-letter {
+  display: none;
+  opacity: 0;
+  transform: scale(0.8) rotateX(90deg);
+  transform-origin: top;
+  transition: transform 0.8s ease, opacity 0.5s ease;
+  background: #D1D8BE;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 0 20px rgba(129, 154, 145, 0.3);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #2f2f2f;
+}
+
+.hidden-letter.show {
+  display: block;
+  animation: openEnvelope 1s ease forwards;
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  background-color: #EEEFE0;
+  margin-top: 2rem;
+  font-size: 1rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+#quote-random {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #819A91;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .timeline {
+    padding: 1rem;
+  }
+
+  .moment {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+.fadeout {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
