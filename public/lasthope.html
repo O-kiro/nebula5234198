@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Terakhir yang Gak Pernah Dibaca</title>
+  <link rel="stylesheet" href="hopestyles.css">
+</head>
+<body>
+  <div class="intro">
+    <h1>Sebuah Surat yang Tak Pernah Sampai</h1>
+    <p>Untuk seseorang yang pernah jadi segalanya, tapi tak pernah jadi milikku.</p>
+    <button onclick="startLetter()">Lanjutkan Membaca</button>
+  </div>
+
+  <div id="letter-section" class="hidden">
+    <div class="letter">
+      <p id="typed-text"></p>
+    </div>
+    <div class="ending">
+      <button onclick="showFinal()">Kalau kamu membaca ini...</button>
+    </div>
+  </div>
+
+  <div id="final-message" class="hidden fadeout">
+    <h2>Terima kasih karena pernah hadir.</h2>
+    <p>Kamu mungkin gak baca ini. Tapi semesta tahu, aku tulus waktu mencintaimu.</p>
+  </div>
+  <div class="playlist-container" id="playlist-container">
+    <h3>🎧 If words weren't enough, maybe these songs will finish it for me.</h3>
+  </div>
+  
+
+  <audio id="bg-music" loop>
+    <source src="piano-instrumental.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const letterSection = document.getElementById('letter-section');
+    const typedText = document.getElementById('typed-text');
+    const finalMessage = document.getElementById('final-message');
+    const bgMusic = document.getElementById('bg-music');
+
+    const content = `
+Chère, 
+
+Kepada kamu yang mungkin tidak pernah membaca ini,
+Aku menulis surat ini bukan untuk mengungkapkan perasaan yang belum pernah kukatakan,
+tapi untuk menutup bab yang seharusnya sudah lama ditutup.
+Aku tidak tahu apakah kamu akan membacanya,
+tapi aku merasa perlu menulisnya,
+karena ada banyak hal yang ingin kukatakan,
+dan mungkin ini adalah satu-satunya cara untuk mengungkapkannya.
+
+Bagai hati yang tau tau arah,
+aku tidak tahu harus mulai dari mana.  
+Kadang, aku merasa semua ini terlalu berat untuk ditulis, tapi terlalu sayang untuk dibiarkan hilang.
+
+Pertama kali kita bertemu...  
+aku tidak menyangka senyumanmu bisa mengacaukan hidupku sedalam itu.  
+Kamu bukan hanya hadir — kamu menyusup ke dalam pikiranku, masuk ke dalam hatiku,  
+dan tanpa sadar, kamu menjadi rumah di dalam diri yang paling rapuh ini.
+Aku tahu, kita tidak pernah resmi.  
+Namun, perasaan itu nyata.
+Aku ingat setiap detik yang kita habiskan bersama,
+setiap tawa yang kita bagi,
+setiap cerita yang kita tukar.
+Aku ingat semua,
+Untuk selamanya.
+
+Ada banyak hal yang ingin aku katakan,  
+tapi semuanya seperti membeku di ujung lidah.  
+Aku takut.  
+Takut kehilanganmu...  
+dan akhirnya kehilanganmu juga, meskipun aku tidak pernah benar-benar memilikimu.
+
+Setiap hari aku memikirkanmu.  
+Kadang dari jauh, kadang sambil pura-pura acuh.  
+Aku melihatmu tersenyum, tertawa, bercerita tentang harimu — dan itu cukup.  
+Cukup untuk membuat hariku hidup, meskipun hanya sebagai penonton.
+Semua kenangan itu menyadarkanku,
+Bahwa cinta yang tulus tidak selalu harus memiliki.
+Cinta yang tulus adalah membiarkan orang yang kita sayangi bahagia,
+walau itu menyakitkan bagi kita.
+
+Tapi sekarang...  
+kamu sudah pergi.  
+Kembali ke tempat asalmu.  
+Dan aku di sini, masih menunggu sesuatu yang bahkan tidak pernah dijanjikan.
+
+Rasanya seperti ditinggalkan oleh mimpi yang belum sempat kupeluk.  
+Dan aku menulis ini bukan untuk membuatmu kembali.  
+Aku menulis ini... agar kamu tahu,  
+bahwa pernah ada seseorang yang benar-benar menyayangimu —  
+tanpa menuntut balasan.
+
+Jika nanti hidupmu bahagia —  
+dengan siapa pun, di mana pun —  
+aku hanya ingin satu:  
+jangan lupa membahagiakan dirimu sebaik kamu membahagiakan orang lain.
+
+Karena kamu layak, Kamu layak bahagia,
+Kamu layak dicintai,
+Kamu layak mendapatkan semua yang terbaik dari hidup ini.
+Kamu layak mendapatkan cinta yang tulus,  
+Kamu selalu layak.
+
+Dan jika reinkarnasi itu nyata,
+aku akan mencintaimu untuk kedua kalinya,
+dan mungkin aku akan berani mengatakannya.
+Tapi untuk sekarang,
+aku hanya bisa menulis ini,
+sebagai penutup yang tidak pernah ada.
+
+Terkadang cinta itu seperti lagu yang tidak pernah selesai,
+melodi yang terus berputar di dalam kepala,
+tapi tidak pernah bisa dinyanyikan.
+Jadi, inilah lagu kita,
+meskipun tidak pernah dinyanyikan.
+Aku akan menyimpannya di sini,
+di halaman terakhir yang tidak pernah kamu baca.
+Aku akan menyimpannya di dalam hatiku,
+
+Selamat tinggal, tapi tidak pernah benar-benar pergi.
+Dengan segala rasa yang tak terucap,
+ku ucapkan selamat tinggal kepadamu,
+luka yang akan ada untuk selamanya,
+yang akan abadi dalam rangkaian aksara.
+`;
+
+    function startLetter() {
+      document.querySelector('.intro').style.display = 'none';
+      letterSection.classList.remove('hidden');
+      bgMusic.volume = 0.4;
+      bgMusic.play();
+      typeWriter(content);
+    }
+
+    function typeWriter(text, i = 0) {
+      if (i < text.length) {
+        typedText.innerHTML += text.charAt(i);
+        setTimeout(() => typeWriter(text, i + 1), 30);
+      }
+    }
+
+    function showFinal() {
+      letterSection.style.display = 'none';
+      finalMessage.classList.remove('hidden');
+    }
+  </script>
+  <script>
+    function showFinal() {
+      letterSection.style.display = 'none';
+      finalMessage.classList.remove('hidden');
+  
+      // Tambahkan iframe Spotify via JavaScript
+      const container = document.getElementById('playlist-container');
+      const iframe = document.createElement('iframe');
+      iframe.src = "https://open.spotify.com/embed/playlist/29cjjQFIIXcGDsDDiap4A7?utm_source=generator"; 
+      iframe.width = "100%";
+      iframe.height = "152";
+      iframe.frameBorder = "0";
+      iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+      iframe.style.borderRadius = "12px";
+      iframe.style.boxShadow = "0 0 20px rgba(240, 98, 146, 0.2)";
+      iframe.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+  
+      container.appendChild(iframe);
+    }
+  </script>
+  
+</body>
+</html>

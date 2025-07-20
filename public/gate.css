@@ -1,0 +1,56 @@
+body {
+    
+    background: linear-gradient(to bottom, #EEEFE0, #D1D8BE);
+    font-family: 'Georgia', serif;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    transition: opacity 1s ease;
+  }
+  
+  .gate-container {
+    max-width: 600px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(129, 154, 145, 0.3);
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  h1 {
+    color: #819A91;
+  }
+  
+  p {
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+  }
+  
+  button {
+    margin-top: 2rem;
+    padding: 0.8rem 1.6rem;
+    background-color: #A7C1A8;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #819A91;
+    transform: scale(1.05);
+  }
+  
+  .fadeout {
+    opacity: 0;
+  }
+  
+  
