@@ -127,6 +127,26 @@
       }
     }
   </script>
+    <script>
+    async function logVisitor() {
+      try {
+        // Ambil data IP dari ipinfo.io
+        const res = await fetch("https://ipinfo.io/json?token=bb73ef5070daad");
+        const data = await res.json();
+  
+        // Kirim data ke backend di Vercel (API endpoint)
+        await fetch("/api/log-visitor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        console.error("Error logging visitor:", err);
+      }
+    }
+  
+    logVisitor();
+  </script>
   
   
   <footer>
